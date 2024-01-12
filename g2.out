@@ -1,0 +1,77 @@
+
+[92m
+ ██████╗ ██╗    ██╗ █████╗ ███████╗ █████╗ ██████╗    ██╗ ██████╗ 
+██╔═══██╗██║    ██║██╔══██╗██╔════╝██╔══██╗██╔══██╗   ██║██╔═══██╗
+██║   ██║██║ █╗ ██║███████║███████╗███████║██████╔╝   ██║██║   ██║
+██║▄▄ ██║██║███╗██║██╔══██║╚════██║██╔══██║██╔══██╗   ██║██║   ██║
+╚██████╔╝╚███╔███╔╝██║  ██║███████║██║  ██║██║  ██║██╗██║╚██████╔╝
+ ╚══▀▀═╝  ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝ ╚═════╝ 
+																																 [0m
+Booting Gandalf v4.0.3-df2e622 (production)
+Loading parameters:  [32mOK[0m
+User silverst_r connection: [32mOK[0m
+
+
+<MY-LIBASM>
+Directory . exists: [32mOK[0m
+RSPEC Detected
+Pushing exercise: [32mOK[0m
+Printing your report:
+
+ [97;1;40m     REPORT      [0m  [97m     MY-LIBASM     [0m 
+
+ Status             [91mFAILURE COMPILATION[0m 
+ Execution Runtime  0.000000            
+ Score              [] 0/0              
+
+Your Stderr:
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_strchr_test_00_impl':
+test_my_libasm.c:(.text+0x79a): undefined reference to `my_strchr'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_strchr_test_01_impl':
+test_my_libasm.c:(.text+0x952): undefined reference to `my_strchr'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_strchr_test_02_impl':
+test_my_libasm.c:(.text+0xb15): undefined reference to `my_strchr'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_index_test_00_impl':
+test_my_libasm.c:(.text+0xd55): undefined reference to `my_index'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_index_test_01_impl':
+test_my_libasm.c:(.text+0xf0d): undefined reference to `my_index'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_index_test_02_impl':
+test_my_libasm.c:(.text+0x10d0): undefined reference to `my_index'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_memset_test_00_impl':
+test_my_libasm.c:(.text+0x139d): undefined reference to `my_memset'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_memset_test_01_impl':
+test_my_libasm.c:(.text+0x1697): undefined reference to `my_memset'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_memcpy_test_00_impl':
+test_my_libasm.c:(.text+0x1995): undefined reference to `my_memcpy'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_memmove_test_00_impl':
+test_my_libasm.c:(.text+0x1c62): undefined reference to `my_memmove'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_strcmp_test_00_impl':
+test_my_libasm.c:(.text+0x1f15): undefined reference to `my_strcmp'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_strcmp_test_01_impl':
+test_my_libasm.c:(.text+0x215d): undefined reference to `my_strcmp'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_strcmp_test_02_impl':
+test_my_libasm.c:(.text+0x23a5): undefined reference to `my_strcmp'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_strncmp_test_00_impl':
+test_my_libasm.c:(.text+0x25f2): undefined reference to `my_strncmp'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_strncmp_test_01_impl':
+test_my_libasm.c:(.text+0x283f): undefined reference to `my_strncmp'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_strncmp_test_02_impl':
+test_my_libasm.c:(.text+0x2a8c): undefined reference to `my_strncmp'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_strcasecmp_test_00_impl':
+test_my_libasm.c:(.text+0x2ce3): undefined reference to `my_strcasecmp'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_strcasecmp_test_01_impl':
+test_my_libasm.c:(.text+0x2f3a): undefined reference to `my_strcasecmp'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_strcasecmp_test_02_impl':
+test_my_libasm.c:(.text+0x3191): undefined reference to `my_strcasecmp'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_read_test_00_return_value_impl':
+test_my_libasm.c:(.text+0x3428): undefined reference to `my_read'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_read_test_01_buffer_impl':
+test_my_libasm.c:(.text+0x3723): undefined reference to `my_read'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_write_test_00_return_value_impl':
+test_my_libasm.c:(.text+0x39b1): undefined reference to `my_write'
+/usr/bin/ld: /tmp/ccDLBY0p.o: in function `output_my_write_test_01_impl':
+test_my_libasm.c:(.text+0x3bfe): undefined reference to `my_write'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:20: executor] Error 1
+
+</MY-LIBASM>

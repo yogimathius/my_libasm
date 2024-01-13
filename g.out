@@ -18,12 +18,20 @@ RSPEC Detected
 Pushing exercise: [32mOK[0m
 Printing your report:
 
- [97;1;40m     REPORT      [0m  [97m   MY-LIBASM   [0m 
+ [97;1;40m     REPORT      [0m  [97m     MY-LIBASM     [0m 
 
- Status             [91mFAILURE TIMEOUT[0m 
- Execution Runtime  0.026259        
- Score              [] 0/0          
+ Status             [91mFAILURE COMPILATION[0m 
+ Execution Runtime  0.000000            
+ Score              [] 0/0              
 
 Your Stderr:
-Do you have an infinite loop? 859: unexpected token at ''
+/usr/bin/ld: /tmp/ccExsyTd.o: in function `output_my_strlen_test_00_impl':
+test_my_libasm.c:(.text+0xd9): undefined reference to `my_strlen'
+/usr/bin/ld: /tmp/ccExsyTd.o: in function `output_my_strlen_test_01_impl':
+test_my_libasm.c:(.text+0x31a): undefined reference to `my_strlen'
+/usr/bin/ld: /tmp/ccExsyTd.o: in function `output_my_strlen_test_02_impl':
+test_my_libasm.c:(.text+0x55b): undefined reference to `my_strlen'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:20: executor] Error 1
+
 </MY-LIBASM>

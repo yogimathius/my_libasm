@@ -2,13 +2,15 @@ section .text
     global my_strncmp
 
 my_strncmp:
-    ; Input Arguments:
-    ;   rdi: First string address
-    ;   rsi: Second string address
-    ;   rdx: n (maximum number of characters to compare)
+    ; Input Arguments: rdi = first string address, rsi = second string address
+    ;   rdx = n (maximum number of characters to compare)
     ; Output: Boolean
+    mov rdi, str_1      ; move str_1 to register
+    mov rsi, str_2      ; move str_2 to register
+    mov rdx, n          ; move n value into reg
 
-    cmp rdx, 0          ; Check if n is zero or we reached the end of either string
+cmp_loop:
+    cmp rdx, 0          ; check if n is zero 
     je equal
     mov al, [rdi]       ; Load characters from both strings
     mov bl, [rsi]
@@ -17,7 +19,7 @@ my_strncmp:
     inc rdi             ; Increment pointers 
     inc rsi
     dec rdx             ; Decrement n
-    call my_strncmp     ; Recursively call my_strncmp
+    call cmp_loop       ; return to start of loop
     jmp done
 
 not_equal:
@@ -30,3 +32,8 @@ equal:
 
 done:
     ret
+
+section .data
+    str_1 db "string_1",0   ; null terinated str_1
+    str_2 db "string_2",0   ; null terinated str_2
+    n db 5                  ; set n value

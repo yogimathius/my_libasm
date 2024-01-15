@@ -1,3 +1,5 @@
+
+
 section .text
     global my_strcmp
 
@@ -7,16 +9,17 @@ my_strcmp:
     ;   rsi: Second string address
     ; Output: Boolean
 
-    cmp rdx, 0          ; Check if n is zero or we reached the end of either string
+    mov rdi, str_1          ; 
+    cmp byte [rdi], 0       ; Check if the current byte is null terminator first string
+    cmp byte [rsi], 0       ; Check if the current byte is null terminator second string
     je equal
-    mov al, [rdi]       ; Load characters from both strings
+    mov al, [rdi]           ; Load characters from both strings
     mov bl, [rsi]
-    cmp al, bl          ; Check if characters are equal
+    cmp al, bl              ; Check if characters are equal
     jne not_equal
-    inc rdi             ; Increment pointers 
+    inc rdi                 ; Increment pointers 
     inc rsi
-    dec rdx             ; Decrement n
-    call my_strncmp     ; Recursively call my_strcmp
+    call my_strncmp         ; Recursively call my_strcmp
     jmp done
 
 not_equal:

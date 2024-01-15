@@ -6,10 +6,6 @@ section .text
 my_strcmp:
     ; Input Arguments: rdi = first string address, rsi = second string address
     ; Output: Boolean
-    mov rdi, str_1          ; Move str_1 to register
-    mov rsi, str_2          ; Move str_2 to register
-
-strcmp_loop:
     mov al, [rdi]           ; Load characters from both strings
     mov bl, [rsi]
     cmp al, 0               ; Check if either string has reached the null terminator
@@ -20,7 +16,7 @@ strcmp_loop:
     jne not_equal
     inc rdi                 ; Increment pointers 
     inc rsi
-    call strcmp_loop        ; Recursively call strcmp_loop
+    call my_strcmp          ; Recursively call strcmp_loop
     jmp done
 
 end_string_1:
@@ -44,7 +40,3 @@ equal:
 
 done:
     ret
-
-section .data
-    str_1 db "string_1",0   ; null terinated str_1
-    str_2 db "string_2",0   ; null terinated str_2

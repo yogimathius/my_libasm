@@ -2,27 +2,31 @@ section .text
     global my_strchr
 
 my_strchr:
-        push rbp
-        mov rbp, rsp
+    ; Input Arguments: 
+    ;   rdi = string address, 
+    ;   rsi = character to compare
+    ; Output:
+    ;   rax = if successful, address pointer for character location in string
+    ;       else, null pointer
 
-strchr_loop:
-        cmp byte [rdi], 0       ; test end of string
-        je fail_end             ; go to end
+    xor rax, rax            ; Clear rax to store result
+    mov al, byte [rsi]      ; Load character into al
 
-        cmp byte [rdi], sil     ; check if current character is equal to character given in parameter
-        je strchr_end           ; go to end
+.loop:
+    mov bl, [rdi]           ; Load a byte from string into bl
+    cmp bl, 0               ; test end of string
+    je .fail_end            ; go to end
 
-        inc rdi                 ; move to next character of the string
-        jmp strchr_loop         ; loop
+    cmp bl, al              ; check if current character is equal to character given in parameter
+    je .strchr_end          ; go to end
 
-strchr_end:
-        mov rax, rdi            ; set function return
-        mov rsp, rbp
-        pop rbp
-        ret
+    inc rdi                 ; move to next character of the string
+    jmp .loop               ; loop
 
-fail_end:
-        mov rax, 0
-        mov rsp, rbp
-        pop rbp
-        ret
+.strchr_end:
+    mov rax, rdi            ; set function return
+    ret
+
+.fail_end:
+    xor rax, rax            ; Return NULL (0) in case of failure
+    ret

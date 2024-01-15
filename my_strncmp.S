@@ -5,12 +5,12 @@ my_strncmp:
     ; Input Arguments: rdi = first string address, rsi = second string address
     ;   rdx = n (maximum number of characters to compare)
     ; Output: Boolean
-    mov rdi, str_1      ; move str_1 to register
-    mov rsi, str_2      ; move str_2 to register
-    mov rdx, n          ; move n value into reg
+    mov rdi, str_1      ; Move str_1 to register
+    mov rsi, str_2      ; Move str_2 to register
+    mov rdx, n          ; Move n value into reg
 
 cmp_loop:
-    cmp rdx, 0          ; check if n is zero 
+    cmp rdx, 0          ; Check if n is zero 
     je equal
     mov al, [rdi]       ; Load characters from both strings
     mov bl, [rsi]
@@ -19,7 +19,7 @@ cmp_loop:
     inc rdi             ; Increment pointers 
     inc rsi
     dec rdx             ; Decrement n
-    call cmp_loop       ; return to start of loop
+    call cmp_loop       ; Return to start of loop
     jmp done
 
 not_equal:

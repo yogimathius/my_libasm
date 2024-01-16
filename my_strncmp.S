@@ -2,31 +2,33 @@ section .text
     global my_strncmp
 
 my_strncmp:
-    ; Input Arguments:
-    ;   rdi: First string address
-    ;   rsi: Second string address
-    ;   rdx: n (maximum number of characters to compare)
-    ; Output: Boolean
+    ; Input Arguments: 
+    ;   rdi = first string address, 
+    ;   rsi = second string address
+    ;   rdx = n (maximum number of characters to compare)
+    ; Output: Integer less than, equal to, or greater than zero
 
-    cmp rdx, 0          ; Check if n is zero or we reached the end of either string
-    je equal
-    mov al, [rdi]       ; Load characters from both strings
-    mov bl, [rsi]
-    cmp al, bl          ; Check if characters are equal
-    jne not_equal
-    inc rdi             ; Increment pointers 
+    cmp rdx, 0              ; Check if n is zero 
+    je .equal               ; If zero, strings are equal
+
+.loop:
+    movzx rax, byte [rdi]   ; Load byte from first string
+    movzx rbx, byte [rsi]   ; Load byte from second string
+    cmp rax, rbx            ; Compare bytes
+    jne .not_equal          ; If not equal, go to not_equal
+    test rax, rax           ; Check if rax (byte from first string) is zero (end of string)
+    je .equal               ; If zero, strings are equal up to n bytes
+    inc rdi                 ; Increment pointers 
     inc rsi
-    dec rdx             ; Decrement n
-    call my_strncmp     ; Recursively call my_strncmp
-    jmp done
+    dec rdx                 ; Decrement n
+    jnz .loop               ; If n is not zero, loop
 
-not_equal:
-    xor rax, rax        ; If characters are not equal, set the zero flag to indicate inequality
-    jmp done
+.equal:
+    xor rax, rax            ; Equal: Set result to zero
+    jmp .done
 
-equal:
-    ; If we reach this point, the strings are equal up to n characters
-    xor rax, rax        ; Set the zero flag to indicate equality
+.not_equal:
+    sub rax, rbx            ; Set rax to difference of the characters
 
-done:
+.done:
     ret

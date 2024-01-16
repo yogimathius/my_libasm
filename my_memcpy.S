@@ -7,13 +7,13 @@ my_memcpy:
     ;   rsi = source address
     ;   rdx = n (number of bytes to be copied into dest from source)
     ; Output: 
-    :   rax = memory address for destination
+    ;   rax = memory address for destination
 
     cmp rdx, 0          ; Check if n is zero 
     je .done
     push rdi            ; Save original destination in stack 
 
-.loop
+.loop:
     mov al, [rsi]       ; Load byte from source address
     mov [rdi], al       ; Store the byte in destination address
     inc rdi             ; Increment pointers 

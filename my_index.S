@@ -1,7 +1,7 @@
 section .text
     global my_index
 
-my_index
+my_index:
     ; Input Arguments: 
     ;   rdi = string address, 
     ;   rsi = character to compare

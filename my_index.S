@@ -1,13 +1,5 @@
 section .text
     global my_index
-    global main
-
-main:
-    ; load arguments to rdi and rsi before calling my_index
-    ; ...
-
-    call my_index
-    
 
 my_index:
     ; Input Arguments: 

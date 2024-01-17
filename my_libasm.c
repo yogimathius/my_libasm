@@ -50,27 +50,26 @@ char *index(const char *s, int c)
 //     return result;
 // }
 
-// char *strchr(const char *str_1, int c) 
-// {
-//     char *result = my_strchr(str_1, c);
+char *strchr(const char *str_1, int c) 
+{
+    char *result = my_strchr(str_1, c);
 
-//     return result;
-// }
+    return result;
+}
 
+int strcmp(const char *str_1, const char *str_2) 
+{
+    int result = my_strcmp(str_1, str_2);
 
-// int strcmp(const char *str_1, const char *str_2) 
-// {
-//     int result = my_strcmp(str_1, str_2);
+    return result;
+}
 
-//     return result;
-// }
+int strncmp(const char *s1, const char *s2, size_t n) 
+{
+    int result = my_strncmp(s1, s2, n);
 
-// int strncmp(const char *s1, const char *s2, size_t n) 
-// {
-//     int result = my_strncmp(s1, s2, n);
-
-//     return result;
-// }
+    return result;
+}
 
 // ssize_t write(int fd, const void *buf, size_t count)
 // {
@@ -81,11 +80,25 @@ char *index(const char *s, int c)
 
 int main() {
     char *str = "hello world!";
+    char *str_2 = "hello world";
     char c = 'w';
+    size_t n = 5;
 
     size_t res_strlen = strlen(str);
     char *res_index = index(str, c);
+    char *res_strchr = strchr(str, c);
+    int res_strcmp = strcmp(str, str_2);
+    int res_strncmp = strncmp(str, str_2, n);
 
-    printf("res_strlen = %lu\nres_index = %s\n", res_strlen, res_index);
+    printf("res_strlen = %lu\n", res_strlen);
+    if (res_index) {
+        printf("res_index = %s\n", res_index);
+    }
+    if (res_strchr) {
+        printf("res_strchr = %s\n", res_strchr);
+    }
+    printf("res_strcmp = %i\n", res_strcmp);
+    printf("res_strncmp = %i\n", res_strncmp);
+
     return 0;    
 }

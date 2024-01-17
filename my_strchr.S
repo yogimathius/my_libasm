@@ -9,8 +9,7 @@ my_strchr:
     ;   rax = if successful, address pointer for character location in string
     ;       else, null pointer
 
-    xor rax, rax            ; Clear rax to store result
-    mov al, byte [rsi]      ; Load character into al
+    mov al, sil             ; Load comparison char into al
 
 .loop:
     mov bl, [rdi]           ; Load a byte from string into bl

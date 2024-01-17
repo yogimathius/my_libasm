@@ -21,7 +21,7 @@ Printing your report:
  [97;1;40m     REPORT      [0m  [97m   MY-LIBASM   [0m 
 
  Status             [91mFAILURE TIMEOUT[0m 
- Execution Runtime  0.024256        
+ Execution Runtime  0.029902        
  Score              [] 0/0          
 
 Your Stderr:

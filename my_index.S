@@ -9,7 +9,7 @@ my_index:
     ;   rax = if successful, address pointer for character location in string
     ;       else, null pointer
 
-    mov al, [rsi]           ; Load comparison char into al
+    mov al, sil             ; Load comparison char into al
 
 .loop:
     mov bl, [rdi]           ; Load a byte from string into bl

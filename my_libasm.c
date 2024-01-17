@@ -8,12 +8,12 @@ size_t strlen(const char *str)
     return result;
 }
 
-// char *index(const char *s, int c) 
-// {
-//     char *result = my_index(s, c);
+char *index(const char *s, int c) 
+{
+    char *result = my_index(s, c);
 
-//     return result;
-// }
+    return result;
+}
 
 // void *memcpy(void *dest, const void *src, size_t n) 
 // {
@@ -81,9 +81,11 @@ size_t strlen(const char *str)
 
 int main() {
     char *str = "hello world!";
+    char c = 'w';
 
-    size_t res = strlen(str);
+    size_t res_strlen = strlen(str);
+    char *res_index = index(str, c);
 
-    printf("res = %lu", res);
+    printf("res_strlen = %lu\nres_index = %s\n", res_strlen, res_index);
     return 0;    
 }

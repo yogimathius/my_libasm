@@ -15,12 +15,12 @@ char *index(const char *s, int c)
     return result;
 }
 
-// void *memcpy(void *dest, const void *src, size_t n) 
-// {
-//     void *result = my_memcpy(dest, src, n);
+void *memcpy(void *dest, const void *src, size_t n) 
+{
+    void *result = my_memcpy(dest, src, n);
 
-//     return result;
-// }
+    return result;
+}
 
 // void *memmove(void *dest, const void *src, size_t n) 
 // {
@@ -79,16 +79,19 @@ int strncmp(const char *s1, const char *s2, size_t n)
 // }
 
 int main() {
-    char *str = "hello world!";
-    char *str_2 = "hello world";
+    char ptr[] = "hello world!";
+    char *s1 = "hello world!";
+    char *s2 = "hello world";
+    char *s3 = "AndNow for Something Completely DIFF";
     char c = 'w';
     size_t n = 5;
 
-    size_t res_strlen = strlen(str);
-    char *res_index = index(str, c);
-    char *res_strchr = strchr(str, c);
-    int res_strcmp = strcmp(str, str_2);
-    int res_strncmp = strncmp(str, str_2, n);
+    size_t res_strlen = strlen(s1);
+    char *res_index = index(s1, c);
+    char *res_strchr = strchr(s1, c);
+    int res_strcmp = strcmp(s1, s2);
+    int res_strncmp = strncmp(s1, s2, n);
+    void *res_memcpy = memcpy(ptr, s3, n);
 
     printf("res_strlen = %lu\n", res_strlen);
     if (res_index) {
@@ -99,6 +102,7 @@ int main() {
     }
     printf("res_strcmp = %i\n", res_strcmp);
     printf("res_strncmp = %i\n", res_strncmp);
+    printf("res_memcpy = %s\n", ptr);
 
     return 0;    
 }

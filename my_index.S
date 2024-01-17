@@ -1,5 +1,13 @@
 section .text
     global my_index
+    global main
+
+main:
+    ; load arguments to rdi and rsi before calling my_index
+    ; ...
+
+    call my_index
+    
 
 my_index:
     ; Input Arguments: 
@@ -9,8 +17,7 @@ my_index:
     ;   rax = if successful, address pointer for character location in string
     ;       else, null pointer
 
-    xor rax, rax            ; Clear rax to store result
-    mov al, byte [rsi]      ; Load character into al
+    mov al, [rsi]           ; Load comparison char into al
 
 .loop:
     mov bl, [rdi]           ; Load a byte from string into bl

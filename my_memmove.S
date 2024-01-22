@@ -2,40 +2,35 @@ section .text
     global my_memmove
 
 my_memmove:
-   ; Input Arguments: 
+    ; Input Arguments: 
     ;   rdi = destination address
     ;   rsi = source address
     ;   rdx = n (number of bytes to be copied into dest from source)
     ; Output: 
     ;   rax = memory address for destination
 
-    cmp rdx, 0          ; Check if n is zero 
+    cmp rdx, 0          ; check if n is zero 
     je .done
-    push rdi            ; Save original destination in stack
-    mov eax, rdi
-    sub eax, rsi
-    cmp eax, rdx
-    jle backwards
 
-forward:
-    mov eax, 0
-forward_loop:
-    mov al, [rsi]       ; Load byte from source address
-    mov [rdi], al       ; Store the byte in destination address
-    inc rdi             ; Increment pointers 
-    inc rsi
-    dec rdx             ; Decrement n
-    jnz forward_loop           ; Loop if n is not zero
-    jmp .done
+    ; create buffer in stack i.e. a "stack frame"
+    push rbp            ; save the base pointer (not necessary, but best practice for debug)
+    mov rbp, rsp        ; set the bp equal to the stack pointer so that we can create a buffer
+    sub rsp, rdx        ; subtracting 'n' bytes to create a buffer of this size
+    push rdi            ; save original destination in stack
 
-backwards:
-    mov eax, rdx
-backwards_loop:
-    mov al, byte [rsi+eax-1]
-    mov byte [rdi+eax-1], al
-    dec eax
-    jnz backwards_loop
+
+    ; copy memory from source into buffer
+    mov rcx, rdx        ; set up for "rep movsb"  
+    lea rdi, [rsp]      ; move the stack pointer address into rdi 
+    rep movsb           ; this command will move rcx bytes from rsi into rdi, therefore into our stack buffer
+
+    ; copy buffer into destination
+    mov rcx, rdx        ; rcx was decremented to zero by rep movsb instruction
+    pop rdi             ; restore the original destination
+    lea rsi, [rsp]      ; move the buffer pointer into rsi
+    rep movsb           ; copy rcx bytes into rdi (the original desitnation)
 
 .done:
-    pop rax             ; Retrieve original destination address into rax
+    mov rsp, rbp        ; restore the stack pointer
+    pop rbp             ; restore the base pointer
     ret

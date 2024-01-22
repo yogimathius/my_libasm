@@ -12,25 +12,26 @@ my_memmove:
     cmp rdx, 0          ; check if n is zero 
     je .done
 
-    ; create buffer in stack i.e. a "stack frame"
-    push rbp            ; save the base pointer (not necessary, but best practice for debug)
-    mov rbp, rsp        ; set the bp equal to the stack pointer so that we can create a buffer
-    sub rsp, rdx        ; subtracting 'n' bytes to create a buffer of this size
-    push rdi            ; save original destination in stack
+    ; check the relative locations of dest and source
+    ; if destination is at a higher address, copy memory backwards to avoid writing over data
+    cmp rdi, rsi            
+    jae .backwards_copy     ; jump if above or equal
 
+.forwards_copy:
+    mov rcx, rdx        ; move number of bytes to copy into rcx to set up next instruction
+    rep movsb           ; this command will move rcx bytes from rsi into rdi
+    jmp .done
 
-    ; copy memory from source into buffer
-    mov rcx, rdx        ; set up for "rep movsb"  
-    lea rdi, [rsp]      ; move the stack pointer address into rdi 
-    rep movsb           ; this command will move rcx bytes from rsi into rdi, therefore into our stack buffer
-
-    ; copy buffer into destination
-    mov rcx, rdx        ; rcx was decremented to zero by rep movsb instruction
-    pop rdi             ; restore the original destination
-    lea rsi, [rsp]      ; move the buffer pointer into rsi
-    rep movsb           ; copy rcx bytes into rdi (the original desitnation)
+.backwards_copy: 
+    add rdi, rdx    ; add 'n' bytes to both the dest and source
+    add rsi, rdx
+    dec rdi         ; decrement each by 1 to move into correct location
+    dec rsi
+    mov rcx, rdx    ; move number of bytes to copy into rcx to set up next instruction
+    std             ; change the flag direction so that rep movsb will work backwords
+    rep movsb       ; this command will move rcx bytes from rsi into rdi from end backwards
+    cld             ; restore direction flag
+    jmp .done
 
 .done:
-    mov rsp, rbp        ; restore the stack pointer
-    pop rbp             ; restore the base pointer
     ret

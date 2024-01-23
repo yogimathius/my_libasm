@@ -9,12 +9,35 @@ TODO - What is the problem? And where is the challenge?
 TODO - How have you solved the problem?
 
 ## Installation
-TODO - How to install your project? npm install? make? make re?
+Make sure you have all required directories as well as the Makefile available:
+/build
+/inc
+/src_asm
+/src_c
+
+Compile the program:
+```
+-> make
+```
+Clean up:
+```
+-> make fclean
+```
 
 ## Usage
-TODO - How does it work?
+Each asm function has a parallel .c function which calls the asm function and passes arguments.
+Naming convention example:
+
+.c func = asm_strlen()
+
+.S func = my_strlen()
+
+We have created a series of tests in the main() located in my_libasm.c.
+There is one test per asm function.
+
+Run the program:
 ```
-./my_project argument1 argument2
+./my_libasm
 ```
 
 ### The Core Team

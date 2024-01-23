@@ -1,4 +1,4 @@
-TARGET := libasm
+TARGET := my_libasm
 BUILD_DIR := ./build
 SRC_ASM_DIR := ./src_asm
 SRC_C_DIR := ./src_c

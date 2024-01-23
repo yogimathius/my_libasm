@@ -16,41 +16,6 @@ char *asm_index(const char *s, int c)
     return result;
 }
 
-void *asm_memcpy(void *dest, const void *src, size_t n) 
-{
-    void *result = my_memcpy(dest, src, n);
-
-    return result;
-}
-
-
-void *asm_memmove(void *dest, const void *src, size_t n) 
-{
-    void *result = my_memmove(dest, src, n);
-
-    return result;
-}
-
-void *asm_memset(void *s, int c, size_t n)
-{
-    void *result = my_memset(s, c, n);
-
-    return result;
-}
-
-ssize_t asm_read(int fd, void *buf, size_t count) 
-{
-    ssize_t result = my_read(fd, buf, count);
-
-    return result;
-}
-
-int asm_strcasecmp(const char *s1, const char *s2) 
-{
-    int result = my_strcasecmp(s1, s2);
-
-    return result;
-}
 
 char *asm_strchr(const char *str_1, int c) 
 {
@@ -73,6 +38,35 @@ int asm_strncmp(const char *s1, const char *s2, size_t n)
     return result;
 }
 
+int asm_strcasecmp(const char *s1, const char *s2) 
+{
+    int result = my_strcasecmp(s1, s2);
+
+    return result;
+}
+
+// void *asm_memcpy(void *dest, const void *src, size_t n) 
+// {
+//     void *result = my_memcpy(dest, src, n);
+
+//     return result;
+// }
+
+
+// void *asm_memmove(void *dest, const void *src, size_t n) 
+// {
+//     void *result = my_memmove(dest, src, n);
+
+//     return result;
+// }
+
+// void *asm_memset(void *s, int c, size_t n)
+// {
+//     void *result = my_memset(s, c, n);
+
+//     return result;
+// }
+
 ssize_t asm_write(int fd, const void *buf, size_t count)
 {
     ssize_t result = my_write(fd, buf, count);
@@ -80,47 +74,74 @@ ssize_t asm_write(int fd, const void *buf, size_t count)
     return result;
 }
 
+ssize_t asm_read(int fd, void *buf, size_t count) 
+{
+    ssize_t result = my_read(fd, buf, count);
+
+    return result;
+}
+
 int main() {
-    // char ptr1[100] = "hello world! this is a test";
-    // char ptr2[] = "hello world! this is a test";
-    char ptr3[100] = "hello world! this is a test";
+    /* testing asm_strlen */
     char *s1 = "hello world!";
-    char *s2 = "hello world";
-    // char *s3 = "AndNow for Something Completely DIFF";
-    char c = 'w';
-    size_t n = 5;
-    size_t m = 30;
-    // char file[] = "myfile.txt";
-    // int fd = open(file, O_RDWR);
-
     size_t res_strlen = asm_strlen(s1);
-    char *res_index = asm_index(s1, c);
-    char *res_strchr = asm_strchr(s1, c);
-    int res_strcmp = asm_strcmp(s1, s2);
-    int res_strncmp = asm_strncmp(s1, s2, n);
-    // void * res_memcpy = asm_memcpy(ptr1, s3, n);
-    // asm_memset(ptr2, c, n);
-    asm_memmove(ptr3 + 10, ptr3, m);
-
     printf("res_strlen = %lu\n", res_strlen);
+
+    /* testing asm_index */
+    char c = 'w';
+    char *res_index = asm_index(s1, c);
     if (res_index) {
         printf("res_index = %s\n", res_index);
     }
+
+    /* testing asm_strcmp */
+    char *s2 = "hello world";
+    int res_strcmp = asm_strcmp(s1, s2);
+    printf("res_strcmp = %i\n", res_strcmp);
+
+    /* testing asm_strncmp */
+    size_t n = 5;
+    int res_strncmp = asm_strncmp(s1, s2, n);
+    printf("res_strncmp = %i\n", res_strncmp);
+
+    /* testing asm_strchr */
+    char b = '!';
+    char *res_strchr = asm_strchr(s1, b);
     if (res_strchr) {
         printf("res_strchr = %s\n", res_strchr);
     }
-    // char buf[100];
 
+    /* testing asm_strcasecmp */
+
+
+    /* testing asm_memcpy */
+    // char ptr1[100] = "hello world! this is a test";
+    // char *s3 = "AndNow for Something Completely DIFF";
+    // void * res_memcpy = asm_memcpy(ptr1, s3, n);
+    // printf("res_memcpy = %p\n", res_memcpy);
+    // printf("new memcopy string = %s\n", ptr1);
+
+    /* testing asm_memmove */
+    // char ptr2[100] = "hello world! this is a test.";
+    // asm_memmove(ptr2 + 5, ptr2, n);
+    // printf("res_memmove = %s\n", ptr3);
+
+    /* testing asm_memset */
+    // char ptr3[] = "hello world! This is a different test.";
+    // asm_memmove(ptr3 + 10, ptr3, m);
+    // printf("res_memset = %p\n", ptr2);
+
+    /* testing asm_read */
+    // char buf[100];
+    // char file[] = "myfile.txt";
+    // int fd = open(file, O_RDWR);
     // size_t bytes_read = asm_read(fd, buf, 100);
+    // printf("bytes read: %lu\n", bytes_read);
+
+    /* testing asm_write */
     // char buff_to_write[13] = "hello world";
     // size_t bytes_written = asm_write(fd, buff_to_write, 13);
     // printf("bytes written: %lu", bytes_written);
-    printf("res_strcmp = %i\n", res_strcmp);
-    printf("res_strncmp = %i\n", res_strncmp);
-    // printf("res_memcpy = %p\n", res_memcpy);
-    // printf("new memcopy string = %s\n", ptr1);
-    // printf("res_memset = %p\n", ptr2);
-    printf("res_memmove = %s\n", ptr3);
 
     return 0;    
 }

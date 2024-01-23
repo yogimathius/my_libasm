@@ -25,15 +25,15 @@ Clean up:
 ```
 
 ## Usage
-Each asm function has a parallel .c function which calls the asm function and passes arguments.
+Each .S function has a parallel .c function. The .c calls the .S and passes arguments.
+
 Naming convention example:
 
 .c func = asm_strlen()
 
 .S func = my_strlen()
 
-We have created a series of tests in the main() located in my_libasm.c.
-There is one test per asm function.
+There are a series of tests in the main() located in my_libasm.c, one test per function.
 
 Run the program:
 ```

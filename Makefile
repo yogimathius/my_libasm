@@ -35,7 +35,7 @@ $(BUILD_DIR)/%.c.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(BUILD_DIR)/*.o
+	find $(BUILD_DIR) -type f -name '*.o' -delete
 
 fclean: clean
 	rm -f $(TARGET)

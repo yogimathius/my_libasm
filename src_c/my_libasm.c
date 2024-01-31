@@ -19,7 +19,7 @@ char *asm_index(const char *s, int c)
 
 char *asm_strchr(const char *str_1, int c) 
 {
-    char *result = my_strchr(str_1, c);
+    char *result = my_strchr(str_1, c); 
 
     return result;
 }
@@ -88,33 +88,33 @@ int main() {
     printf("res_strlen = %lu\n", res_strlen);
 
     // /* testing asm_index */
-    // char *s2 = "hello world!";
-    // char c = 'w';
-    // char *res_index = asm_index(s2, c);
-    // if (res_index) {
-    //     printf("res_index = %s\n", res_index);
-    // }
+    char *s2 = "hello world!";
+    char c = 'w';
+    char *res_index = asm_index(s2, c);
+    if (res_index) {
+        printf("res_index = %s\n", res_index);
+    }
 
     // /* testing asm_strcmp */
-    // char *s3 = "hello world!";
-    // char *s4 = "hello world";
-    // int res_strcmp = asm_strcmp(s3, s4);
-    // printf("res_strcmp = %i\n", res_strcmp);
+    char *s3 = "hello world!";
+    char *s4 = "hello world";
+    int res_strcmp = asm_strcmp(s3, s4);
+    printf("res_strcmp = %i\n", res_strcmp);
 
     // /* testing asm_strncmp */
-    // size_t n = 5;
-    // char *s5 = "hello world";
-    // char *s6 = "hello world";
-    // int res_strncmp = asm_strncmp(s5, s6, n);
-    // printf("res_strncmp = %i\n", res_strncmp);
+    size_t n = 5;
+    char *s5 = "hello world";
+    char *s6 = "hello world";
+    int res_strncmp = asm_strncmp(s5, s6, n);
+    printf("res_strncmp = %i\n", res_strncmp);
 
-    // /* testing asm_strchr */
-    // char *s7 = "hello world!";
-    // char b = 'l';
-    // char *res_strchr = asm_strchr(s7, b);
-    // if (res_strchr) {
-    //     printf("res_strchr = %s\n", res_strchr);
-    // }
+    /* testing asm_strchr */
+    char *s7 = "hello world!";
+    char b = 'l';
+    char *res_strchr = asm_strchr(s7, b);
+    if (res_strchr) {
+        printf("res_strchr = %s\n", res_strchr);
+    }
 
     /* testing asm_strcasecmp */
 
@@ -122,20 +122,20 @@ int main() {
     /* testing asm_memcpy */
     char *s8 = "hello world!";
     size_t m = 5;
-    char ptr1[] = "And Now for Something Completely DIFFerent!";
+    char ptr1[50] = "And Now for Something Completely DIFFerent!";
     printf("memcopy string = %s\n", ptr1);
     void *res_memcpy = asm_memcpy(ptr1, s8, m);
     printf("res_memcpy = %p\n", res_memcpy);
     printf("new memcopy string = %s\n", ptr1);
 
     /* testing asm_memmove */
-    char ptr2[100] = "hello world! this is a test.";
+    char ptr2[50] = "hello world! this is a test.";
     asm_memmove(ptr2 + 5, ptr2, m);
     printf("res_memmove = %s\n", ptr2);
 
     /* testing asm_memset */
     char d = '*';
-    char ptr3[] = "hello world! This is a different test.";
+    char ptr3[50] = "hello world! This is a different test.";
     asm_memset(ptr3, d, m);
     printf("res_memset = %s\n", ptr3);
 
@@ -146,6 +146,7 @@ int main() {
     // size_t bytes_read = asm_read(fd, buf, 100);
     // printf("bytes read: %lu\n", bytes_read);
     // printf("read buf = %s\n", buf);
+
     /* testing asm_write */
     // char buff_to_write[13] = "hello world";
     // size_t bytes_written = asm_write(fd, buff_to_write, 13);

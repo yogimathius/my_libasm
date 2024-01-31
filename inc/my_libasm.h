@@ -12,6 +12,7 @@ extern void *my_memset(void *s, int c, size_t n);
 extern ssize_t my_read(int fd, void *buf, size_t count);
 extern int my_strcasecmp(const char *s1, const char *s2, size_t n);
 extern char *my_strchr(const char *str_1, int c);
+extern char *my_strchr_c(const char *str_1, int c);
 extern int my_strcmp(const char *str_1, const char *str_2);
 extern int my_strncmp(const char *s1, const char *s2, size_t n);
 extern ssize_t my_write(int fd, const void *buf, size_t count);

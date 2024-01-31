@@ -12,11 +12,11 @@ my_index:
     mov al, sil             ; Load comparison char into al
 
 .loop:
-    mov bl, [rdi]           ; Load a byte from string into bl
-    cmp bl, 0               ; test end of string
+    mov cl, [rdi]           ; Load a byte from string into bl
+    cmp cl, 0               ; test end of string
     je .fail_end            ; go to end
 
-    cmp bl, al              ; check if current character is equal to character given in parameter
+    cmp cl, al              ; check if current character is equal to character given in parameter
     je .strchr_end          ; go to end
 
     inc rdi                 ; move to next character of the string

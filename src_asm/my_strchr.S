@@ -10,22 +10,24 @@ my_strchr:
     ;       else, null pointer
 
     mov al, sil             ; Load comparison char into al
+    mov r9, rdi
 
 .loop:
-    mov bl, [rdi]           ; Load a byte from string into bl
-    cmp bl, 0               ; test end of string
+    mov dl, [r9]            ; Load a byte from string into bl
+    cmp dl, 0               ; test end of string
     je .fail_end            ; go to end
 
-    cmp bl, al              ; check if current character is equal to character given in parameter
+    cmp dl, al              ; check if current character is equal to character given in parameter
     je .strchr_end          ; go to end
 
-    inc rdi                 ; move to next character of the string
+    inc r9                  ; move to next character of the string
     jmp .loop               ; loop
 
 .strchr_end:
-    mov rax, rdi            ; set function return
+    mov rax, r9            ; set function return
     ret
 
 .fail_end:
     xor rax, rax            ; Return NULL (0) in case of failure
     ret
+    

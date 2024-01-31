@@ -38,12 +38,13 @@ int asm_strncmp(const char *s1, const char *s2, size_t n)
     return result;
 }
 
-int asm_strcasecmp(const char *s1, const char *s2, size_t n) 
+int asm_strcasecmp(const char *s1, const char *s2) 
 {
-    int result = my_strcasecmp(s1, s2, n);
+    int result = my_strcasecmp(s1, s2);
 
     return result;
 }
+
 
 void *asm_memcpy(void *dest, const void *src, size_t n) 
 {
@@ -117,14 +118,17 @@ int main() {
     }
 
     /* testing asm_strcasecmp */
-
+    char *s8 = "HELLo WorLd";
+    char *s9 = "heLlo woRld";
+    int res_strcasecmp = asm_strcasecmp(s8, s9);
+    printf("res_strcasecmp = %i\n", res_strcasecmp);
 
     /* testing asm_memcpy */
-    char *s8 = "hello world!";
+    char *s10 = "hello world!";
     size_t m = 5;
     char ptr1[50] = "And Now for Something Completely DIFFerent!";
     printf("memcopy string = %s\n", ptr1);
-    void *res_memcpy = asm_memcpy(ptr1, s8, m);
+    void *res_memcpy = asm_memcpy(ptr1, s10, m);
     printf("res_memcpy = %p\n", res_memcpy);
     printf("new memcopy string = %s\n", ptr1);
 

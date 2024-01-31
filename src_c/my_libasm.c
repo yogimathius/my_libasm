@@ -38,15 +38,9 @@ int asm_strncmp(const char *s1, const char *s2, size_t n)
     return result;
 }
 
-<<<<<<< HEAD
 int asm_strcasecmp(const char *s1, const char *s2, size_t n) 
 {
     int result = my_strcasecmp(s1, s2, n);
-=======
-int asm_strcasecmp(const char *s1, const char *s2) 
-{
-    int result = my_strcasecmp(s1, s2);
->>>>>>> silver/restructure
 
     return result;
 }
@@ -66,21 +60,12 @@ void *asm_memmove(void *dest, const void *src, size_t n)
     return result;
 }
 
-<<<<<<< HEAD
-// void *asm_memset(void *s, int c, size_t n)
-// {
-//     void *result = my_memset(s, c, n);
-
-//     return result;
-// }
-=======
 void *asm_memset(void *s, int c, size_t n)
 {
     void *result = my_memset(s, c, n);
 
     return result;
 }
->>>>>>> silver/restructure
 
 ssize_t asm_write(int fd, const void *buf, size_t count)
 {
@@ -103,21 +88,12 @@ int main() {
     printf("res_strlen = %lu\n", res_strlen);
 
     // /* testing asm_index */
-<<<<<<< HEAD
-    char *s2 = "hello world!";
-    char c = 'w';
-    char *res_index = asm_index(s2, c);
-    if (res_index) {
-        printf("res_index = %s\n", res_index);
-    }
-=======
     // char *s2 = "hello world!";
     // char c = 'w';
     // char *res_index = asm_index(s2, c);
     // if (res_index) {
     //     printf("res_index = %s\n", res_index);
     // }
->>>>>>> silver/restructure
 
     // /* testing asm_strcmp */
     // char *s3 = "hello world!";
@@ -158,17 +134,10 @@ int main() {
     printf("res_memmove = %s\n", ptr2);
 
     /* testing asm_memset */
-<<<<<<< HEAD
-    // char d = '*';
-    // char ptr3[] = "hello world! This is a different test.";
-    // asm_memset(ptr3, d, m);
-    // printf("res_memset = %s\n", ptr3);
-=======
     char d = '*';
     char ptr3[] = "hello world! This is a different test.";
     asm_memset(ptr3, d, m);
     printf("res_memset = %s\n", ptr3);
->>>>>>> silver/restructure
 
     /* testing asm_read */
     // char buf[100];
@@ -177,19 +146,10 @@ int main() {
     // size_t bytes_read = asm_read(fd, buf, 100);
     // printf("bytes read: %lu\n", bytes_read);
     // printf("read buf = %s\n", buf);
-<<<<<<< HEAD
-=======
-
->>>>>>> silver/restructure
     /* testing asm_write */
     // char buff_to_write[13] = "hello world";
     // size_t bytes_written = asm_write(fd, buff_to_write, 13);
     // printf("bytes written: %lu", bytes_written);
-<<<<<<< HEAD
-    return 0;    
-}
-=======
 
     return 0;    
 }
->>>>>>> silver/restructure

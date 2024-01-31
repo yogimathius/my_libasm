@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#include "../my_libasm.h"
-=======
 #include "../inc/my_libasm.h"
->>>>>>> silver/restructure
 #include "stdio.h"
 #include <fcntl.h>
 

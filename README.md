@@ -3,10 +3,25 @@
 
 
 ## Task
-TODO - What is the problem? And where is the challenge?
+This is one of your very rare opportinuty to be that person: "wowww, they know how to read assembly."
+
+Write assembly language scripts with the same functionality as the following standard C library functions:
+- strlen      -> my_strlen
+- strchr      -> my_strchr
+- memset      -> my_memset
+- memcpy      -> my_memcpy
+- strcmp      -> my_strcmp
+- memmove     -> my_memmove
+
+- strncmp     -> my_strncmp
+- strcasecmp  -> my_strcasecmp
+- index       -> my_index
+
+- read        -> my_read
+- write       -> my_write 
 
 ## Description
-TODO - How have you solved the problem?
+Each assembly function is contained in its own function_name.S file, compiled together with, and called by parallel functions in my_libasm.c using the included Makefile.
 
 ## Installation
 Make sure you have all required directories as well as the Makefile available:

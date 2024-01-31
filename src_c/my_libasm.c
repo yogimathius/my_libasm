@@ -1,6 +1,7 @@
 #include "../my_libasm.h"
 #include "stdio.h"
 #include <fcntl.h>
+
 size_t asm_strlen(const char *str) 
 {
     size_t result = my_strlen(str);
@@ -37,9 +38,9 @@ int asm_strncmp(const char *s1, const char *s2, size_t n)
     return result;
 }
 
-int asm_strcasecmp(const char *s1, const char *s2) 
+int asm_strcasecmp(const char *s1, const char *s2, size_t n) 
 {
-    int result = my_strcasecmp(s1, s2);
+    int result = my_strcasecmp(s1, s2, n);
 
     return result;
 }
